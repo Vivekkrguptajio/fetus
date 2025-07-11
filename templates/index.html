@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetal Organ Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>🧠 Fetal Organ Classifier</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <button type="submit">🔮 Predict</button>
+    </form>
+
+    {% if filename %}
+        <div class="result">
+            <h2>📷 Uploaded Image</h2>
+            <img src="{{ url_for('static', filename='uploaded/' + filename) }}" alt="Uploaded Image">
+            <p>✅ Prediction: <strong>{{ label }}</strong></p>
+            <p>🎯 Confidence: {{ confidence }}%</p>
+            <h3>📊 Class Confidence Chart</h3>
+            <img src="{{ url_for('static', filename=chart_path.split('/')[-1]) }}" style="width: 60%;">
+            <br><br>
+            <a href="{{ url_for('download_report') }}" class="btn">📄 Download Report</a>
+        </div>
+    {% endif %}
+
+    <hr>
+    <h3>🕒 Prediction History</h3>
+    <ul>
+        {% for entry in history %}
+            <li><strong>{{ entry.label }}</strong> ({{ entry.confidence }}%) – {{ entry.image }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

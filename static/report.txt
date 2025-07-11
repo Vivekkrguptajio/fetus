@@ -1,0 +1,6 @@
+Fetal Ultrasound Prediction Report
+
+Image: 1752213138_Screenshot 2025-07-11 093523.png
+Prediction: Fetal femur
+Confidence: 100.0%
+

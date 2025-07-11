@@ -1,0 +1,7 @@
+streamlit
+flask
+torch
+torchvision
+matplotlib
+Pillow
+gdown
